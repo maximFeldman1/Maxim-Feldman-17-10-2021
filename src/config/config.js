@@ -1,0 +1,1 @@
+export const accuWeatherApiKey = 'rYBVyyZFhtZkPwiQI6eQWaIYipiGFVma'

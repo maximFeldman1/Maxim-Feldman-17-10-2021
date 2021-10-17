@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-function App() {
+import Header from './components/Header'
+import HomeScreen from './screens/HomeScreen'
+import FavoriteScreen from './screens/FavoriteScreen'
+import { useSelector } from 'react-redux'
+
+
+
+
+const App = () => {
+  const themeReducer = useSelector(({ themeReducer }) => themeReducer)
+
+  const style = themeReducer.theme
+    ? {
+      background: 'no-repeat',
+      backgroundSize: 'cover',
+      backgroundColor: '#E0F50B ',
+      minHeight: '100vh',
+      color: 'black',
+    }
+    : {
+      background: 'no-repeat',
+      backgroundSize: 'cover',
+      backgroundColor: '#1c2949',
+      minHeight: '100vh',
+      color: 'white',
+    }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Header />
+      <div style={style}>
+        <Route path='/' component={HomeScreen} exact />
+        <Route path='/favorite' component={FavoriteScreen} />
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App
