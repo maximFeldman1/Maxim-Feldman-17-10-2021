@@ -1,7 +1,8 @@
 import axios from 'axios'
-import { accuWeatherApiKey} from '../config/config'
 
 
+
+let accuWeatherApiKey = '8MIzGGl33vxvfOwRUAaO7amkjot7RP42'
 
 export const listAutocompleteSearch = (searchWord) => async (dispatch) => {
   try {
